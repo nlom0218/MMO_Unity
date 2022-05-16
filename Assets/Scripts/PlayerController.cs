@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    float _speed = 10.0f;
     void Start()
     {
 
@@ -14,15 +16,16 @@ public class PlayerController : MonoBehaviour
     // // PlayerController (*)
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-            transform.position += new Vector3(0.0f, 0.0f, 1.0f);
-        if (Input.GetKey(KeyCode.S))
-            transform.position -= new Vector3(0.0f, 0.0f, 1.0f);
-        if (Input.GetKey(KeyCode.A))
-            transform.position -= new Vector3(1.0f, 0.0f, 0.0f);
-        if (Input.GetKey(KeyCode.D))
-            transform.position += new Vector3(1.0f, 0.0f, 0.0f);
+        // transform.TransformDirection(): Local => World 
+        // transform.InverseTransformDirection(): World => Local
 
-        // transform
+        if (Input.GetKey(KeyCode.W))
+            transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+        if (Input.GetKey(KeyCode.S))
+            transform.Translate(Vector3.back * Time.deltaTime * _speed);
+        if (Input.GetKey(KeyCode.A))
+            transform.position += transform.TransformDirection(Vector3.left * Time.deltaTime * _speed);
+        if (Input.GetKey(KeyCode.D))
+            transform.position += transform.TransformDirection(Vector3.right * Time.deltaTime * _speed);
     }
 }
