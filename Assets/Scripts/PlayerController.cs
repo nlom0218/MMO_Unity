@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     float _speed = 10.0f;
     void Start()
     {
+        Managers.Input.KeyAction -= onKeyBoard;
+        Managers.Input.KeyAction += onKeyBoard;
 
         // 방향백터
         // // 1. 거리(크기) magnitude
@@ -20,11 +22,13 @@ public class PlayerController : MonoBehaviour
     // // Transform
     // // PlayerController (*)
 
-    float _yAngle = 0.0f;
     void Update()
     {
-        _yAngle += Time.deltaTime * 100.0f;
 
+    }
+
+    void onKeyBoard()
+    {
         // 절대 회전값
         // transform.eulerAngles = new Vector3(0.0f, _yAngle, 0.0f);
 
