@@ -2,16 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Tank
-{
-    public float speed = 10.0f;
-    Player player; // 포함 관계 Nested(중첩된) Prefab(Pre-Fabrication)
-}
 
-class Player
-{
-
-}
 public class PlayerController : MonoBehaviour
 {
 
